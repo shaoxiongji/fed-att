@@ -3,6 +3,7 @@
 # @python: 3.6
 
 import random
+import torch
 from torch import optim, nn
 from torch.utils.data import DataLoader
 
@@ -48,16 +49,11 @@ if __name__ == "__main__":
     net_glob = RnnLm(config)
     if args.gpu != -1:
         net_glob = net_glob.cuda()
-    w_glob = net_glob.cpu().state_dict()      # copy weights
-
-    optimizer = optim.RMSprop(net_glob.parameters(), lr=args.lr)
-    criterion = nn.NLLLoss()
+    w_glob = net_glob.cpu().state_dict()
 
     lr = args.lr
     best_val_loss = None
     model_saved = '../log/{}/model_{}_{}_{}.pt'.format(args.dataset, args.epochs, args.agg, args.frac)
-
-    # save results
     loss_train = []
 
     try:

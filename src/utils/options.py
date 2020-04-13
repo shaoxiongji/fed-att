@@ -18,7 +18,7 @@ def args_parser():
     parser.add_argument('--lr_server', type=float, default=0.001, help='learning rate of server')
     parser.add_argument('--momentum', type=float, default=0.5, help='SGD momentum (default: 0.5)')
     parser.add_argument('--agg', type=str, default='att', help='averaging strategy')
-    parser.add_argument('--epsilon', type=float, default=1, help='stepsize')
+    parser.add_argument('--epsilon', type=float, default=1.2, help='stepsize')
     parser.add_argument('--ord', type=int, default=2, help='similarity metric')
     parser.add_argument('--dp', type=float, default=0.001, help='differential privacy')
     # model arguments
